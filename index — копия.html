@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="styles/reset.css">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/jquery.jqplot.min.css">
+	<link rel="stylesheet" href="styles/animate.css">
+	<script src="js/modernizr.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/function.js"></script>
+	<script src="js/jquery.jqplot.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jqplot.canvasTextRenderer.min.js"></script>
+	<script src="js/jqplot.canvasAxisLabelRenderer.min.js"></script>
+	<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/javascript" src="js/noty/packaged/jquery.noty.packaged.min.js"></script>
+</head>
+<body>
+	<header class="cd-header">
+		<a href="#0" class="cd-3d-nav-trigger"><span></span></a>
+	</header>
+	<nav class="top-menu" style="z-index: 10">
+		<ul class="menu-main">
+			<li>
+				<a href="#0" onclick="toggle(3)" class="active3">Тема 1</a>
+			</li>
+			<li>
+				<a href="#0" onclick="toggle(4)" class="active4">Тема 2</a>
+			</li>
+			<li>
+				<a href="#0" onclick="toggle(8)" class="active8">Тема 5</a>
+			</li>
+			<li>
+				<a href="#0" onclick="toggle(5)" class="active5">Тема 4</a>
+			</li>
+			<li>
+				<a href="#0" onclick="toggle(7)" class="active7">Тема 5</a>
+			</li>
+			<li>
+				<a href="js\Тема 6\SLAU 1920x1080.html">Тема 6</a>
+			</li>
+			
+		</ul>
+		<span class="cd-marker color-1"></span>
+	</nav>
+<script src="js/main.js"></script>
+	<div class="content3 none" style="display: none;">
+		<form class="form-container">
+			<div class="form-title">
+				<h2>Решение СЛАУ</h2>
+			</div>
+			<div class="form-title">
+				Размер матрицы:
+				<select class="slaurazm" style="margin-left: 28px;" onChange="reloadtableslau()">
+					<option value="2">2x2</option>
+					<option value="3" selected>3x3</option>
+					<option value="4">4x4</option>
+				</select>
+			</div><br>
+			<table class="tab1">
+				<tr>
+					<td ><br>
+						<label for="typeslaukramer">
+							<div class="form-title" style="text-align: left;">
+								<span style="text-decoration: underline; cursor: pointer;" onclick="reloadtableslau(true); slaumetod();">Решение</span>
+								СЛАУ методом Крамера
+							</div>
+						</label><br>
+					</td>
+					<td colspan="2">
+						<div class="form-title">
+							<input type="radio" checked name="typedet" style="margin: 0 10px" class="typeslaukramer" id="typeslaukramer"></div>
+					</td>
+				</tr>
+				<tr>
+					<td><br>
+						<label for="typeslaugaus">
+							<div class="form-title" style="text-align: left;">
+								<span style="text-decoration: underline; cursor: pointer;" onclick="reloadtableslau(true); slaumetod();">Решение</span>
+								СЛАУ методом Гаусса
+							</div>
+						</label><br>
+					</td>
+					<td colspan="2">
+						<div class="form-title">
+							<input type="radio" name="typedet" style="margin: 0 10px" class="typeslaugaus" id="typeslaugaus"></div>
+					</td>
+				</tr>
+				<tr>
+					<td><br>
+						<label for="typeslaugausjord">
+							<div class="form-title" style="text-align: left;">
+								<span style="text-decoration: underline; cursor: pointer;" onclick="reloadtableslau(true); slaumetod();">Решение</span>
+								СЛАУ методом Гаусса-Жордана
+							</div>
+						</label><br>
+					</td>
+					<td colspan="2">
+						<div class="form-title">
+							<input type="radio" name="typedet" style="margin: 0 10px" class="typeslaugausjord" id="typeslaugausjord"></div>
+					</td>
+				</tr>
+				<tr>
+					<td><br>
+						<label for="typeslaumart">
+							<div class="form-title" style="text-align: left;">
+								<span style="text-decoration: underline; cursor: pointer;" onclick="reloadtableslau(true); slaumetod();">Решение</span>
+								СЛАУ матричным методом
+							</div>
+						</label><br>
+					</td>
+					<td colspan="2">
+						<div class="form-title">
+							<input type="radio" style="margin: 0 10px" name="typedet" class="typeslaumart" id="typeslaumart"></div>
+					</td>
+				</tr>
+				<tr>
+					<td><br>
+						<label for="typeslauyacob">
+							<div class="form-title" style="display: table-cell;">
+								<span style="text-decoration: underline; cursor: pointer;" onclick="reloadtableslau(true); slaumetod();">Решение</span>
+								СЛАУ методом Якоби
+							</div>
+						</label><br>
+					</td>
+					<td>
+						<input type="radio" class="typeslauyacob" style="margin: 0 10px" id="typeslauyacob" name="typedet"></td>
+					<td>
+						<label for="typeslauyacob">
+							<span style="margin-bottom: 10px;color: #725129;text-shadow: #fdf2e4 0 1px 0;display: inline-block;">Точность:</span>
+							<input type="text" value="0.001" class="form-field toshnJacob" style="width: 55px; margin: 0; margin-left: 10px;"></label>
+					</td>
+				</tr>
+				<tr>
+					<td><br>
+						<label for="toshngauszeyd">
+							<div class="form-title" style="display: table-cell;">
+								<span style="text-decoration: underline; cursor: pointer;" onclick="reloadtableslau(true); slaumetod();">Решение</span>
+								СЛАУ методом Гаусса-Зейделя
+							</div>
+						</label><br>
+					</td>
+					<td>
+						<input type="radio" class="toshngauszeyd" style="margin: 0 10px" id="toshngauszeyd" name="typedet"></td>
+					<td>
+						<label for="toshngauszeyd">
+							<span style="margin-bottom: 10px;color: #725129;text-shadow: #fdf2e4 0 1px 0;display: inline-block;">Точность:</span>
+							<input type="text" value="0.001" class="form-field toshngauszeid" style="width: 55px; margin: 0; margin-left: 10px;"></label>
+					</td>
+				</tr>
+				<tr>
+					<td><br>
+						<label for="typeslaurelax">
+							<div class="form-title" style="display: table-cell;">
+								<span style="text-decoration: underline; cursor: pointer;" onclick="reloadtableslau(true); slaumetod();">Решение</span>
+								СЛАУ методом релаксации
+							</div>
+						</label><br><br>
+					</td>
+					<td>
+						<input type="radio" class="typeslaurelax" style="margin: 0 10px" id="typeslaurelax" name="typedet"></td>
+					<td>
+						<label for="typeslaurelax">
+							<span style="margin-bottom: 10px;color: #725129;text-shadow: #fdf2e4 0 1px 0;display: inline-block;">Точность:</span>
+							<input type="text" value="0.001" class="form-field toshnrelax" style="width: 55px; margin: 0; margin-left: 10px;"></label>
+					</td>
+				</tr>
+			</table><br><br>
+			<div class="centertable">
+				<div class="tableslau"></div>
+			</div>
+            <br><br>
+			<div class="submit-container" >
+				<input class="submit-button" onclick="slaumetod()" type="button" value="Посчитать" />
+			</div>
+			
+		</form>
+	</div>
+	<div class="content4 none" style="display: none;">
+		<form class="form-container" style="padding-bottom: 10px;">
+			<div class="form-title">
+				<h2>Нахождение корней функции</h2>
+			</div>
+			<div class="form-title" style="text-decoration: underline;">
+			</div>
+			<div class="form-title">
+				<table class="tab1">
+					<tr>
+						<td><br>
+							<label for="polovindel">
+								<div class="form-title">
+									Половинного деления
+								</div>
+							</label><br>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" checked name="typeutosch" style="margin: 0 10px" class="polovindel" id="polovindel">
+							</div>
+						</td><br>
+					</tr>
+					<tr>
+						<td><br>
+							<label for="metodModNytona">
+								<div class="form-title">
+									Метод золотого сечения
+								</div>
+							</label><br>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeutosch" style="margin: 0 10px" class="metodModNytona" id="metodModNytona">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><br>
+							<label for="methord">
+								<div class="form-title">
+									Методом хорд
+								</div>
+							</label><br>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeutosch" style="margin: 0 10px" class="methord" id="methord">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><br>
+							<label for="metodnytona">
+								<div class="form-title">
+									Методом Ньютона
+								</div>
+							</label><br>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeutosch" style="margin: 0 10px" class="metodnytona" id="metodnytona">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><br>
+							<label for="metodModNytona">
+								<div class="form-title">
+									Модифицированным методом Ньютона
+								</div>
+							</label><br>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeutosch" style="margin: 0 10px" class="metodModNytona" id="metodModNytona">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><br>
+							<label for="prosIter">
+								<div class="form-title">
+									Методом простых итераций
+								</div>
+							</label><br>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeutosch" style="margin: 0 10px" class="prosIter" id="prosIter">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><br>
+							<label for="methSek">
+								<div class="form-title">
+									Методом секущих
+								</div>
+							</label><br>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeutosch" style="margin: 0 10px" class="methSek" id="methSek">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><br>
+							<label for="metodModNytona">
+								<div class="form-title">
+									Метод Мюллера
+								</div>
+							</label><br>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeutosch" style="margin: 0 10px" class="metodModNytona" id="metodModNytona">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td><br>
+							<label for="metodnytona">
+								<div class="form-title">
+									Методом Риддера
+								</div>
+							</label><br>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeutosch" style="margin: 0 10px" class="metodnytona" id="metodnytona">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="form-title"><br><br>
+				<label>Погрешность:
+				<input type="text" value="0.001" class="form-field pogrgraph" style="width: 55px; margin: 0; margin-left: 10px;"></label>
+			</div>
+			
+			<div>
+				<div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer; width: 180px;" onclick="nahojdKorney(function(x) { return Math.log(x+5)-Math.cos(x); }, function(x) { return Math.sin(x) + 1 / (x + 5) * Math.log(10); })">
+					<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-1-Frame"><nobr><span class="math" id="MathJax-Span-1" role="math" style="width: 9.831em; display: inline-block;"><span style="display: inline-block; position: relative; width: 7.916em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.817em 1000.003em 3.128em -999.997em); top: -2.719em; left: 0.003em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Main;">lg</span><span class="mo" id="MathJax-Span-4"></span><span class="mo" id="MathJax-Span-5" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-6" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-7" style="font-family: MathJax_Main; padding-left: 0.204em;">+</span><span class="mn" id="MathJax-Span-8" style="font-family: MathJax_Main; padding-left: 0.204em;">5</span><span class="mo" id="MathJax-Span-9" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-10" style="font-family: MathJax_Main; padding-left: 0.305em;">=</span><span class="mi" id="MathJax-Span-11" style="font-family: MathJax_Main; padding-left: 0.305em;">cos</span><span class="mo" id="MathJax-Span-12"></span><span class="mo" id="MathJax-Span-13" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-14" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-15" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.724em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.378em; vertical-align: -0.372em;"></span></span></nobr></span></div>
+				</div>
+				<div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer; width: 210px;" onclick="nahojdKorney(function(x) { return Math.pow(x, 3) - 3 * Math.pow(x, 2) + 9 * x + 2; }, function(x) { return 3 * Math.pow(x, 2) - 6 * x + 9; })">
+					<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-2-Frame"><nobr><span class="math" id="MathJax-Span-16" role="math" style="width: 11.847em; display: inline-block;"><span style="display: inline-block; position: relative; width: 9.529em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.666em 1000.003em 2.976em -999.997em); top: -2.719em; left: 0.003em;"><span class="mrow" id="MathJax-Span-17"><span class="msubsup" id="MathJax-Span-18"><span style="display: inline-block; position: relative; width: 1.011em; height: 0px;"><span style="position: absolute; clip: rect(3.38em 1000.003em 4.136em -999.997em); top: -3.979em; left: 0.003em;"><span class="mi" id="MathJax-Span-19" style="font-family: MathJax_Math-italic;">x</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; top: -4.383em; left: 0.557em;"><span class="mn" id="MathJax-Span-20" style="font-size: 70.7%; font-family: MathJax_Main;">3</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span><span class="mo" id="MathJax-Span-21" style="font-family: MathJax_Main; padding-left: 0.204em;">−</span><span class="mn" id="MathJax-Span-22" style="font-family: MathJax_Main; padding-left: 0.204em;">3</span><span class="msubsup" id="MathJax-Span-23"><span style="display: inline-block; position: relative; width: 1.011em; height: 0px;"><span style="position: absolute; clip: rect(3.38em 1000.003em 4.136em -999.997em); top: -3.979em; left: 0.003em;"><span class="mi" id="MathJax-Span-24" style="font-family: MathJax_Math-italic;">x</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; top: -4.383em; left: 0.557em;"><span class="mn" id="MathJax-Span-25" style="font-size: 70.7%; font-family: MathJax_Main;">2</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span><span class="mo" id="MathJax-Span-26" style="font-family: MathJax_Main; padding-left: 0.204em;">+</span><span class="mn" id="MathJax-Span-27" style="font-family: MathJax_Main; padding-left: 0.204em;">9</span><span class="mi" id="MathJax-Span-28" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-29" style="font-family: MathJax_Main; padding-left: 0.204em;">+</span><span class="mn" id="MathJax-Span-30" style="font-family: MathJax_Main; padding-left: 0.204em;">2</span><span class="mo" id="MathJax-Span-31" style="font-family: MathJax_Main; padding-left: 0.305em;">=</span><span class="mn" id="MathJax-Span-32" style="font-family: MathJax_Main; padding-left: 0.305em;">0</span></span><span style="display: inline-block; width: 0px; height: 2.724em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.316em; vertical-align: -0.184em;"></span></span></nobr></span></div>
+				</div>
+				 <div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer; width: 210px;" onclick="nahojdKorney(function(x) { return Math.sqrt(x) - Math.cos(0.387 * x); }, function(x) { return 0.5 * Math.sqrt(x) + 0.387 * Math.sin(0.387 * x); })">
+	 				<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-3-Frame"><nobr><span class="math" id="MathJax-Span-33" role="math" style="width: 11.746em; display: inline-block;"><span style="display: inline-block; position: relative; width: 9.478em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.817em 1000.003em 3.178em -999.997em); top: -2.719em; left: 0.003em;"><span class="mrow" id="MathJax-Span-34"><span class="msqrt" id="MathJax-Span-35"><span style="display: inline-block; position: relative; width: 1.414em; height: 0px;"><span style="position: absolute; clip: rect(3.38em 1000.003em 4.136em -999.997em); top: -3.979em; left: 0.859em;"><span class="mrow" id="MathJax-Span-36"><span class="mi" id="MathJax-Span-37" style="font-family: MathJax_Math-italic;">x</span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(0.91em 1000.003em 1.263em -999.997em); top: -1.711em; left: 0.859em;"><span style="border-left-width: 0.557em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.25px; vertical-align: -0.048em;"></span><span style="display: inline-block; width: 0px; height: 1.061em;"></span></span><span style="position: absolute; clip: rect(3.027em 1000.003em 4.337em -999.997em); top: -3.879em; left: 0.003em;"><span style="font-family: MathJax_Main;">√</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span><span class="mo" id="MathJax-Span-38" style="font-family: MathJax_Main; padding-left: 0.204em;">−</span><span class="mi" id="MathJax-Span-39" style="font-family: MathJax_Main; padding-left: 0.204em;">cos</span><span class="mo" id="MathJax-Span-40"></span><span class="mo" id="MathJax-Span-41" style="font-family: MathJax_Main;">(</span><span class="mn" id="MathJax-Span-42" style="font-family: MathJax_Main;">0.387</span><span class="mi" id="MathJax-Span-43" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-44" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-45" style="font-family: MathJax_Main; padding-left: 0.305em;">=</span><span class="mn" id="MathJax-Span-46" style="font-family: MathJax_Main; padding-left: 0.305em;">0</span></span><span style="display: inline-block; width: 0px; height: 2.724em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.441em; vertical-align: -0.434em;"></span></span></nobr></span></div>
+				 </div>
+			 </div>
+		</form>
+	</div>
+	<div class="content8 none" style="display: none;">
+		<form class="form-container" style="padding-bottom: 10px;">
+			 <div class="form-title">
+			 	<h2>Решение систем нелинейных уравнений</h2>
+			 </div>
+			 <div class="form-title" style="text-decoration: underline;">
+			 </div>
+			 <div class="form-title">
+			 	<table>
+			 		<tr>
+			 			<td>
+			 				<label for="nsuNewton">
+			 					<div class="form-title">
+			 						Метод Ньютона
+			 					</div>
+			 				</label>
+			 			</td>
+			 			<td colspan="2">
+			 				<div class="form-title">
+			 					<input type="radio" checked name="typensu" style="margin: 0 10px" class="nsuNewton" id="nsuNewton">
+			 				</div>
+			 			</td>
+			 		</tr>
+			 		<tr>
+			 			<td>
+			 				<label for="nsuNewtonMod">
+			 					<div class="form-title">
+			 						Модифицированный метод Ньютона
+			 					</div>
+			 				</label>
+			 			</td>
+			 			<td colspan="2">
+			 				<div class="form-title">
+			 					<input type="radio" name="typensu" style="margin: 0 10px" class="nsuNewtonMod" id="nsuNewtonMod">
+			 				</div>
+			 			</td>
+			 		</tr>
+			 		<tr>
+			 			<td>
+			 				<label for="nsuZeidel">
+			 					<div class="form-title">
+			 						Метод Мюллера
+			 					</div>
+			 				</label>
+			 			</td>
+			 			<td colspan="2">
+			 				<div class="form-title">
+			 					<input type="radio" name="typensu" style="margin: 0 10px" class="nsuZeidel" id="nsuZeidel">
+			 				</div>
+			 			</td>
+			 		</tr>
+					 <tr>
+						<td>
+							<label for="nsuProstIter">
+								<div class="form-title">
+									Метод Риддера
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typensu" style="margin: 0 10px" class="nsuProstIter" id="nsuProstIter">
+							</div>
+						</td>
+					</tr>
+			 		<tr>
+			 			<td>
+			 				<label for="nsuProstIter">
+			 					<div class="form-title">
+			 						Метод простых итераций
+			 					</div>
+			 				</label>
+			 			</td>
+			 			<td colspan="2">
+			 				<div class="form-title">
+			 					<input type="radio" name="typensu" style="margin: 0 10px" class="nsuProstIter" id="nsuProstIter">
+			 				</div>
+			 			</td>
+			 		</tr>
+					 <tr>
+						<td>
+							<label for="nsuNewtonMod">
+								<div class="form-title">
+									Метод секущих
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typensu" style="margin: 0 10px" class="nsuNewtonMod" id="nsuNewtonMod">
+							</div>
+						</td>
+					</tr>
+					 <tr>
+						<td>
+							<label for="nsuNewton">
+								<div class="form-title">
+									Метод золотого сечения
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" checked name="typensu" style="margin: 0 10px" class="nsuNewton" id="nsuNewton">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="nsuProstIter">
+								<div class="form-title">
+									Метод половинного деления
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typensu" style="margin: 0 10px" class="nsuProstIter" id="nsuProstIter">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="nsuNewton">
+								<div class="form-title">
+									Метод Хорд
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" checked name="typensu" style="margin: 0 10px" class="nsuNewton" id="nsuNewton">
+							</div>
+						</td>
+					</tr>
+			 	</table>
+			 </div>
+			 <div class="form-title">
+			 	<label>Точность:
+			 	<input type="text" value="0.01" class="form-field pogrgraphNSU" style="width: 55px; margin: 0; margin-left: 10px;"></label>
+			 </div>
+			 <li>
+				<a href="help\help2.html">Помощь</a>
+			</li>
+			<div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer;" onclick="snu(1);">
+				<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-1-Frame"><nobr><span class="math" id="MathJax-Span-1" role="math" style="width: 14.216em; display: inline-block;"><span style="display: inline-block; position: relative; width: 11.444em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(2.321em 1000.003em 5.043em -999.997em); top: -3.929em; left: 0.003em;"><span class="mrow" id="MathJax-Span-2"><span class="mrow" id="MathJax-Span-3"><span class="mo" id="MathJax-Span-4" style="vertical-align: 0.003em;"><span style="font-family: MathJax_Size3;">{</span></span><span class="mtable" id="MathJax-Span-5" style="padding-right: 0.154em; padding-left: 0.154em;"><span style="display: inline-block; position: relative; width: 10.386em; height: 0px;"><span style="position: absolute; clip: rect(3.228em 1000.003em 4.791em -999.997em); top: -3.979em; left: 0.003em;"><span style="display: inline-block; position: relative; width: 0.003em; height: 0px;"><span style="position: absolute; clip: rect(3.833em 1000.003em 4.136em -999.997em); top: -4.584em; left: 0.003em;"><span class="mtd" id="MathJax-Span-6"><span class="mrow" id="MathJax-Span-7"></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.833em 1000.003em 4.136em -999.997em); top: -3.324em; left: 0.003em;"><span class="mtd" id="MathJax-Span-21"><span class="mrow" id="MathJax-Span-22"></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.472em 1000.003em 5.043em -999.997em); top: -3.979em; left: 1.011em;"><span style="display: inline-block; position: relative; width: 9.378em; height: 0px;"><span style="position: absolute; clip: rect(3.077em 1000.003em 4.388em -999.997em); top: -4.584em; left: 0.003em;"><span class="mtd" id="MathJax-Span-8"><span class="mrow" id="MathJax-Span-9"><span class="mi" id="MathJax-Span-10" style="font-family: MathJax_Main;">sin</span><span class="mo" id="MathJax-Span-11"></span><span class="mo" id="MathJax-Span-12" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-13" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-14" style="font-family: MathJax_Main; padding-left: 0.204em;">+</span><span class="mn" id="MathJax-Span-15" style="font-family: MathJax_Main; padding-left: 0.204em;">1.5</span><span class="mo" id="MathJax-Span-16" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-17" style="font-family: MathJax_Main; padding-left: 0.204em;">−</span><span class="mi" id="MathJax-Span-18" style="font-family: MathJax_Math-italic; padding-left: 0.204em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-19" style="font-family: MathJax_Main; padding-left: 0.305em;">=</span><span class="mn" id="MathJax-Span-20" style="font-family: MathJax_Main; padding-left: 0.305em;">1.2</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.077em 1000.003em 4.388em -999.997em); top: -3.324em; left: 0.003em;"><span class="mtd" id="MathJax-Span-23"><span class="mrow" id="MathJax-Span-24"><span class="mi" id="MathJax-Span-25" style="font-family: MathJax_Main;">cos</span><span class="mo" id="MathJax-Span-26"></span><span class="mo" id="MathJax-Span-27" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-28" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-29" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-30" style="font-family: MathJax_Main; padding-left: 0.204em;">+</span><span class="mi" id="MathJax-Span-31" style="font-family: MathJax_Math-italic; padding-left: 0.204em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-32" style="font-family: MathJax_Main; padding-left: 0.204em;">−</span><span class="mn" id="MathJax-Span-33" style="font-family: MathJax_Main; padding-left: 0.204em;">0.5</span><span class="mo" id="MathJax-Span-34" style="font-family: MathJax_Main; padding-left: 0.305em;">=</span><span class="mn" id="MathJax-Span-35" style="font-family: MathJax_Main; padding-left: 0.305em;">0</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span><span class="mo" id="MathJax-Span-36"></span></span></span><span style="display: inline-block; width: 0px; height: 3.934em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 3.128em; vertical-align: -1.247em;"></span></span></nobr></span></div>
+			</div>
+			<div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer;" onclick="snu(4);">
+				<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-2-Frame"><nobr><span class="math" id="MathJax-Span-81" role="math" style="width: 16.333em; display: inline-block;"><span style="display: inline-block; position: relative; width: 13.158em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(2.321em 1000.003em 5.043em -999.997em); top: -3.929em; left: 0.003em;"><span class="mrow" id="MathJax-Span-82"><span class="mrow" id="MathJax-Span-83"><span class="mo" id="MathJax-Span-84" style="vertical-align: 0.003em;"><span style="font-family: MathJax_Size3;">{</span></span><span class="mtable" id="MathJax-Span-85" style="padding-right: 0.154em; padding-left: 0.154em;"><span style="display: inline-block; position: relative; width: 12.099em; height: 0px;"><span style="position: absolute; clip: rect(3.228em 1000.003em 4.841em -999.997em); top: -3.979em; left: 0.003em;"><span style="display: inline-block; position: relative; width: 0.003em; height: 0px;"><span style="position: absolute; clip: rect(3.833em 1000.003em 4.136em -999.997em); top: -4.584em; left: 0.003em;"><span class="mtd" id="MathJax-Span-86"><span class="mrow" id="MathJax-Span-87"></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.833em 1000.003em 4.136em -999.997em); top: -3.274em; left: 0.003em;"><span class="mtd" id="MathJax-Span-109"><span class="mrow" id="MathJax-Span-110"></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.371em 1000.003em 5.093em -999.997em); top: -3.979em; left: 1.011em;"><span style="display: inline-block; position: relative; width: 11.091em; height: 0px;"><span style="position: absolute; clip: rect(2.976em 1000.003em 4.488em -999.997em); top: -4.584em; left: 0.003em;"><span class="mtd" id="MathJax-Span-88"><span class="mrow" id="MathJax-Span-89"><span class="msqrt" id="MathJax-Span-90"><span style="display: inline-block; position: relative; width: 1.414em; height: 0px;"><span style="position: absolute; clip: rect(3.077em 1000.003em 4.388em -999.997em); top: -3.979em; left: 1.011em;"><span class="mrow" id="MathJax-Span-91"><span class="mo" id="MathJax-Span-92" style="font-family: MathJax_Main;">(</span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(0.91em 1000.003em 1.263em -999.997em); top: -1.913em; left: 1.011em;"><span style="border-left-width: 0.406em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.25px; vertical-align: -0.048em;"></span><span style="display: inline-block; width: 0px; height: 1.061em;"></span></span><span style="position: absolute; clip: rect(2.976em 1000.003em 4.488em -999.997em); top: -3.979em; left: 0.003em;"><span style="font-family: MathJax_Size1;">√</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span><span class="mn" id="MathJax-Span-93" style="font-family: MathJax_Main;">0.16</span><span class="mo" id="MathJax-Span-94" style="font-family: MathJax_Main; padding-left: 0.204em;">−</span><span class="mo" id="MathJax-Span-95" style="font-family: MathJax_Main; padding-left: 0.204em;">(</span><span class="mi" id="MathJax-Span-96" style="font-family: MathJax_Math-italic;">x</span><span class="texatom" id="MathJax-Span-97"><span class="mrow" id="MathJax-Span-98"><span class="mo" id="MathJax-Span-99" style="font-family: MathJax_Main;">/</span></span></span><span class="mn" id="MathJax-Span-100" style="font-family: MathJax_Main;">3</span><span class="msubsup" id="MathJax-Span-101"><span style="display: inline-block; position: relative; width: 0.809em; height: 0px;"><span style="position: absolute; clip: rect(3.077em 1000.003em 4.388em -999.997em); top: -3.979em; left: 0.003em;"><span class="mo" id="MathJax-Span-102" style="font-family: MathJax_Main;">)</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; top: -4.332em; left: 0.406em;"><span class="mn" id="MathJax-Span-103" style="font-size: 70.7%; font-family: MathJax_Main;">2</span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span><span class="mo" id="MathJax-Span-104" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-105" style="font-family: MathJax_Main; padding-left: 0.204em;">+</span><span class="mi" id="MathJax-Span-106" style="font-family: MathJax_Math-italic; padding-left: 0.204em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-107" style="font-family: MathJax_Main; padding-left: 0.305em;">=</span><span class="mn" id="MathJax-Span-108" style="font-family: MathJax_Main; padding-left: 0.305em;">0</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.077em 1000.003em 4.388em -999.997em); top: -3.274em; left: 0.003em;"><span class="mtd" id="MathJax-Span-111"><span class="mrow" id="MathJax-Span-112"><span class="mi" id="MathJax-Span-113" style="font-family: MathJax_Main;">cos</span><span class="mo" id="MathJax-Span-114"></span><span class="mo" id="MathJax-Span-115" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-116" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-117" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-118" style="font-family: MathJax_Main; padding-left: 0.204em;">+</span><span class="mi" id="MathJax-Span-119" style="font-family: MathJax_Math-italic; padding-left: 0.204em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-120" style="font-family: MathJax_Main; padding-left: 0.204em;">−</span><span class="mn" id="MathJax-Span-121" style="font-family: MathJax_Main; padding-left: 0.204em;">0.5</span><span class="mo" id="MathJax-Span-122" style="font-family: MathJax_Main; padding-left: 0.305em;">=</span><span class="mn" id="MathJax-Span-123" style="font-family: MathJax_Main; padding-left: 0.305em;">0</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span><span class="mo" id="MathJax-Span-124"></span></span></span><span style="display: inline-block; width: 0px; height: 3.934em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 3.191em; vertical-align: -1.247em;"></span></span></nobr></span></div>
+			</div>
+			
+		</form>
+	</div>
+	<div class="content5 none" style="display: none;">
+		<form class="form-container" style="padding-bottom: 10px;">
+			<div class="form-title">
+				<h2>Нахождение значений интегралов</h2>
+			</div>
+			<div class="form-title" style="text-decoration: underline;">
+			</div>
+			<div class="form-title">
+				<table>
+					<tr>
+						<td>
+							<label for="metodLevPr">
+								<div class="form-title">
+									Левых прямоугольников
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" checked name="typeIntegr" style="margin: 0 10px" class="metodLevPr" id="metodLevPr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="metodPrPr">
+								<div class="form-title">
+									Правых прямоугольников
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeIntegr" style="margin: 0 10px" class="metodPrPr" id="metodPrPr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="metodSrPr">
+								<div class="form-title">
+									Средних прямоугольников
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeIntegr" style="margin: 0 10px" class="metodSrPr" id="metodSrPr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="metodTrapec">
+								<div class="form-title">
+									Метод трапеции
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeIntegr" style="margin: 0 10px" class="metodTrapec" id="metodTrapec">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="metodParabol">
+								<div class="form-title">
+									Метод парабол
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeIntegr" style="margin: 0 10px" class="metodParabol" id="metodParabol">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="montekarlo">
+								<div class="form-title">
+									Метод Монте - Карло
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeIntegr" style="margin: 0 10px" class="montekarlo" id="montekarlo">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="trivosimish">
+								<div class="form-title">
+									Метод 3/8
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeIntegr" style="margin: 0 10px" class="trivosimish" id="trivosimish">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="montekarlo">
+								<div class="form-title">
+									Метод 2/45
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeIntegr" style="margin: 0 10px" class="montekarlo" id="montekarlo">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="metodLevPr">
+								<div class="form-title">
+									Аппроксимация методом Тейлора
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" checked name="typeIntegr" style="margin: 0 10px" class="metodLevPr" id="metodLevPr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="metodPrPr">
+								<div class="form-title">
+									Метод Ньютона-Лейбница
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeIntegr" style="margin: 0 10px" class="metodPrPr" id="metodPrPr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="metodSrPr">
+								<div class="form-title">
+									Метод Чебышева
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeIntegr" style="margin: 0 10px" class="metodSrPr" id="metodSrPr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="metodTrapec">
+								<div class="form-title">
+									Метод Лежандра-Гаусса
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="typeIntegr" style="margin: 0 10px" class="metodTrapec" id="metodTrapec">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="form-title">
+				<label>Погрешность:
+				<input type="text" value="0" class="form-field pogrgintg" style="width: 55px; margin: 0; margin-left: 42px;"></label>
+			</div>
+			<div class="form-title">
+				<label>Число разбиений:
+				<input type="text" value="100" class="form-field shislrazb" style="width: 55px; margin: 0; margin-left: 10px;"></label>
+			</div>
+			<li>
+				<a href="help\help3.html">Помощь</a>
+			</li>
+			<div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer;" onclick="nahojdIntegr(function(x) { return Math.pow(x, 3) - 2 + Math.cos(x); }, [0, 3])">
+				$$\int_{0}^{3}(x^3-2+cos(x))dx$$
+			</div>
+			<div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer;" onclick="nahojdIntegr(function(x) { return 4 * x * Math.cos(x); }, [0, 3])">
+				$$\int_{0}^{3}(4x*cos(x))dx$$
+			</div>
+			 <div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer;" onclick="nahojdIntegr(function(x) { return getX(x, [[1, 0.2], [1.6, 0.5], [2.4, 1.8], [3.6, 2.8], [3.8, 2.9], [4.3, 1.7], [4.8, 2.4], [5, 3]]) }, [1, 5])">
+				$$\begin{matrix} x &amp; 1.0 &amp; 1.6 &amp; 2.4 &amp; 3.6 &amp; 3.8 &amp; 4.3 &amp; 4.8 &amp; 5.0 \\ y &amp; 0.2 &amp; 0.5 &amp; 1.8 &amp; 2.8 &amp; 2.9 &amp; 1.7 &amp; 2.4 &amp; 3.0 \end{matrix}$$
+			</div>
+		</form>
+	</div>
+	<div class="content6 none" style="display: none;">
+		<form class="form-container" style="padding-bottom: 10px;">
+			<div class="form-title">
+				<h2>Численное диффиринцирование</h2>
+			</div>
+			<div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer;" onclick="nahojdProizv1()">
+				$$y=x^3*arcsin(x)+((x^2+2)/3)*\sqrt(1-x^2)$$
+			</div>
+			<div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer;" onclick="nahojdProizv2()">
+				$$(4x+7)/(2x+3)$$
+			</div>
+			 <div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer;" onclick="nahojdProizv3()">
+				$$(2x^3+1)cos(x)$$
+			</div>
+		</form>
+	</div>
+	<div class="content7 none" style="display: none;">
+		<form class="form-container" style="padding-bottom: 10px;">
+			<div class="form-title">
+				<h2>Aппроксимация</h2>
+			</div>
+			<div class="form-title">
+				<table>
+					<tr>
+						<td>
+							<label for="metodLinApr">
+								<div class="form-title">
+									Линейная функция
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" checked name="aproxim" style="margin: 0 10px" class="metodLinApr" id="metodLinApr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="metodParabApr">
+								<div class="form-title">
+									Квадратный трехчлен
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="aproxim" style="margin: 0 10px" class="metodParabApr" id="metodParabApr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="stepenApr">
+								<div class="form-title">
+									Степенная функция
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="aproxim" style="margin: 0 10px" class="stepenApr" id="stepenApr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="pokazatApr">
+								<div class="form-title">
+									Показательная функция
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="aproxim" style="margin: 0 10px" class="pokazatApr" id="pokazatApr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="logorifmApr">
+								<div class="form-title">
+									Логaрифмическая функция
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="aproxim" style="margin: 0 10px" class="logorifmApr" id="logorifmApr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="giperbApr">
+								<div class="form-title">
+									Гиперболическая функция
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="aproxim" style="margin: 0 10px" class="giperbApr" id="giperbApr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="drobnlinApr">
+								<div class="form-title">
+									Дробно-линейная функция
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="aproxim" style="margin: 0 10px" class="drobnlinApr" id="drobnlinApr">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="drobnracnApr">
+								<div class="form-title">
+									Дробно-рациональная функция
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="aproxim" style="margin: 0 10px" class="drobnracnApr" id="drobnracnApr">
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer;" onclick="aproxim()">
+				<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-10-Frame"><nobr><span class="math" id="MathJax-Span-227" role="math" style="width: 23.793em; display: inline-block;"><span style="display: inline-block; position: relative; width: 19.156em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(0.759em 1000.003em 3.48em -999.997em); top: -2.366em; left: 0.003em;"><span class="mrow" id="MathJax-Span-228"><span class="mtable" id="MathJax-Span-229" style="padding-right: 0.154em; padding-left: 0.154em;"><span style="display: inline-block; position: relative; width: 18.803em; height: 0px;"><span style="position: absolute; clip: rect(2.724em 1000.003em 5.093em -999.997em); top: -3.979em; left: 0.003em;"><span style="display: inline-block; position: relative; width: 0.557em; height: 0px;"><span style="position: absolute; clip: rect(3.38em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.3em;"><span class="mtd" id="MathJax-Span-230"><span class="mrow" id="MathJax-Span-231"><span class="mi" id="MathJax-Span-232" style="font-family: MathJax_Math-italic;">x</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.38em 1000.003em 4.337em -999.997em); top: -3.223em; left: 50%; margin-left: -0.249em;"><span class="mtd" id="MathJax-Span-257"><span class="mrow" id="MathJax-Span-258"><span class="mi" id="MathJax-Span-259" style="font-family: MathJax_Math-italic;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 1.565em;"><span style="display: inline-block; position: relative; width: 1.263em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-233"><span class="mrow" id="MathJax-Span-234"><span class="mn" id="MathJax-Span-235" style="font-family: MathJax_Main;">0.1</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -0.249em;"><span class="mtd" id="MathJax-Span-260"><span class="mrow" id="MathJax-Span-261"><span class="mn" id="MathJax-Span-262" style="font-family: MathJax_Main;">0</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 3.833em;"><span style="display: inline-block; position: relative; width: 1.263em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-236"><span class="mrow" id="MathJax-Span-237"><span class="mn" id="MathJax-Span-238" style="font-family: MathJax_Main;">0.7</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-263"><span class="mrow" id="MathJax-Span-264"><span class="mn" id="MathJax-Span-265" style="font-family: MathJax_Main;">0.6</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 6.152em;"><span style="display: inline-block; position: relative; width: 1.263em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-239"><span class="mrow" id="MathJax-Span-240"><span class="mn" id="MathJax-Span-241" style="font-family: MathJax_Main;">0.9</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-266"><span class="mrow" id="MathJax-Span-267"><span class="mn" id="MathJax-Span-268" style="font-family: MathJax_Main;">1.4</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 8.42em;"><span style="display: inline-block; position: relative; width: 1.263em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-242"><span class="mrow" id="MathJax-Span-243"><span class="mn" id="MathJax-Span-244" style="font-family: MathJax_Main;">1.7</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-269"><span class="mrow" id="MathJax-Span-270"><span class="mn" id="MathJax-Span-271" style="font-family: MathJax_Main;">3.2</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 10.688em;"><span style="display: inline-block; position: relative; width: 1.263em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-245"><span class="mrow" id="MathJax-Span-246"><span class="mn" id="MathJax-Span-247" style="font-family: MathJax_Main;">1.9</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-272"><span class="mrow" id="MathJax-Span-273"><span class="mn" id="MathJax-Span-274" style="font-family: MathJax_Main;">2.7</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 12.956em;"><span style="display: inline-block; position: relative; width: 1.263em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-248"><span class="mrow" id="MathJax-Span-249"><span class="mn" id="MathJax-Span-250" style="font-family: MathJax_Main;">2.9</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-275"><span class="mrow" id="MathJax-Span-276"><span class="mn" id="MathJax-Span-277" style="font-family: MathJax_Main;">2.1</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 15.224em;"><span style="display: inline-block; position: relative; width: 1.263em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-251"><span class="mrow" id="MathJax-Span-252"><span class="mn" id="MathJax-Span-253" style="font-family: MathJax_Main;">3.7</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-278"><span class="mrow" id="MathJax-Span-279"><span class="mn" id="MathJax-Span-280" style="font-family: MathJax_Main;">2.8</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 17.543em;"><span style="display: inline-block; position: relative; width: 1.263em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-254"><span class="mrow" id="MathJax-Span-255"><span class="mn" id="MathJax-Span-256" style="font-family: MathJax_Main;">4.6</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -0.249em;"><span class="mtd" id="MathJax-Span-281"><span class="mrow" id="MathJax-Span-282"><span class="mn" id="MathJax-Span-283" style="font-family: MathJax_Main;">1</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.371em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 3.128em; vertical-align: -1.247em;"></span></span></nobr></span></div>
+			</div>
+			<div class="form-title">
+				<h2>Интерполяция</h2>
+			</div>
+			<div class="form-title">
+				<table>
+					<tr>
+						<td>
+							<label for="metodLinInterp">
+								<div class="form-title">
+									Линейная интерполяция
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" checked name="interpol" style="margin: 0 10px" class="metodLinInterp" id="metodLinInterp">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="metodParabInterp">
+								<div class="form-title">
+									Параболическая интерполяция
+								</div>
+							</label>
+						</td>
+						<td colspan="2">
+							<div class="form-title">
+								<input type="radio" name="interpol" style="margin: 0 10px" class="metodParabInterp" id="metodParabInterp">
+							</div>
+							<li>
+				<a href="help\help4.html">Помощь</a>
+			</li>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="form-title" style="text-align: center;padding: 2px;border-radius: 6px; cursor: pointer;" onclick="interpol()">
+				<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-10-Frame"><nobr><span class="math" id="MathJax-Span-227" role="math" style="width: 46.525em; display: inline-block;"><span style="display: inline-block; position: relative; width: 37.503em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(0.759em 1000.003em 3.48em -999.997em); top: -2.366em; left: 0.003em;"><span class="mrow" id="MathJax-Span-228"><span class="mtable" id="MathJax-Span-229" style="padding-right: 0.154em; padding-left: 0.154em;"><span style="display: inline-block; position: relative; width: 37.15em; height: 0px;"><span style="position: absolute; clip: rect(2.724em 1000.003em 5.093em -999.997em); top: -3.979em; left: 0.003em;"><span style="display: inline-block; position: relative; width: 0.557em; height: 0px;"><span style="position: absolute; clip: rect(3.38em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.3em;"><span class="mtd" id="MathJax-Span-230"><span class="mrow" id="MathJax-Span-231"><span class="mi" id="MathJax-Span-232" style="font-family: MathJax_Math-italic;">x</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.38em 1000.003em 4.337em -999.997em); top: -3.223em; left: 50%; margin-left: -0.249em;"><span class="mtd" id="MathJax-Span-266"><span class="mrow" id="MathJax-Span-267"><span class="mi" id="MathJax-Span-268" style="font-family: MathJax_Math-italic;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 1.565em;"><span style="display: inline-block; position: relative; width: 2.271em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-233"><span class="mrow" id="MathJax-Span-234"><span class="mn" id="MathJax-Span-235" style="font-family: MathJax_Main;">0.38</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -1.157em;"><span class="mtd" id="MathJax-Span-269"><span class="mrow" id="MathJax-Span-270"><span class="mn" id="MathJax-Span-271" style="font-family: MathJax_Main;">1.462</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 4.841em;"><span style="display: inline-block; position: relative; width: 2.271em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.653em;"><span class="mtd" id="MathJax-Span-236"><span class="mrow" id="MathJax-Span-237"><span class="mn" id="MathJax-Span-238" style="font-family: MathJax_Main;">0.4</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -1.157em;"><span class="mtd" id="MathJax-Span-272"><span class="mrow" id="MathJax-Span-273"><span class="mn" id="MathJax-Span-274" style="font-family: MathJax_Main;">1.491</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 8.117em;"><span style="display: inline-block; position: relative; width: 2.271em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-239"><span class="mrow" id="MathJax-Span-240"><span class="mn" id="MathJax-Span-241" style="font-family: MathJax_Main;">0.81</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -1.157em;"><span class="mtd" id="MathJax-Span-275"><span class="mrow" id="MathJax-Span-276"><span class="mn" id="MathJax-Span-277" style="font-family: MathJax_Main;">2.247</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 11.394em;"><span style="display: inline-block; position: relative; width: 1.767em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-242"><span class="mrow" id="MathJax-Span-243"><span class="mn" id="MathJax-Span-244" style="font-family: MathJax_Main;">1.25</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-278"><span class="mrow" id="MathJax-Span-279"><span class="mn" id="MathJax-Span-280" style="font-family: MathJax_Main;">3.49</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 14.166em;"><span style="display: inline-block; position: relative; width: 2.271em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-245"><span class="mrow" id="MathJax-Span-246"><span class="mn" id="MathJax-Span-247" style="font-family: MathJax_Main;">1.59</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -1.157em;"><span class="mtd" id="MathJax-Span-281"><span class="mrow" id="MathJax-Span-282"><span class="mn" id="MathJax-Span-283" style="font-family: MathJax_Main;">4.903</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 17.442em;"><span style="display: inline-block; position: relative; width: 2.271em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-248"><span class="mrow" id="MathJax-Span-249"><span class="mn" id="MathJax-Span-250" style="font-family: MathJax_Main;">1.86</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -1.157em;"><span class="mtd" id="MathJax-Span-284"><span class="mrow" id="MathJax-Span-285"><span class="mn" id="MathJax-Span-286" style="font-family: MathJax_Main;">6.423</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 20.718em;"><span style="display: inline-block; position: relative; width: 2.271em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-251"><span class="mrow" id="MathJax-Span-252"><span class="mn" id="MathJax-Span-253" style="font-family: MathJax_Main;">1.98</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -1.157em;"><span class="mtd" id="MathJax-Span-287"><span class="mrow" id="MathJax-Span-288"><span class="mn" id="MathJax-Span-289" style="font-family: MathJax_Main;">7.242</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 24.045em;"><span style="display: inline-block; position: relative; width: 2.271em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-254"><span class="mrow" id="MathJax-Span-255"><span class="mn" id="MathJax-Span-256" style="font-family: MathJax_Main;">2.36</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -1.157em;"><span class="mtd" id="MathJax-Span-290"><span class="mrow" id="MathJax-Span-291"><span class="mn" id="MathJax-Span-292" style="font-family: MathJax_Main;">10.59</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 27.321em;"><span style="display: inline-block; position: relative; width: 2.775em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-257"><span class="mrow" id="MathJax-Span-258"><span class="mn" id="MathJax-Span-259" style="font-family: MathJax_Main;">2.37</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -1.409em;"><span class="mtd" id="MathJax-Span-293"><span class="mrow" id="MathJax-Span-294"><span class="mn" id="MathJax-Span-295" style="font-family: MathJax_Main;">10.697</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 31.101em;"><span style="display: inline-block; position: relative; width: 2.775em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-260"><span class="mrow" id="MathJax-Span-261"><span class="mn" id="MathJax-Span-262" style="font-family: MathJax_Main;">2.76</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -1.409em;"><span class="mtd" id="MathJax-Span-296"><span class="mrow" id="MathJax-Span-297"><span class="mn" id="MathJax-Span-298" style="font-family: MathJax_Main;">15.799</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(2.523em 1000.003em 4.892em -999.997em); top: -3.979em; left: 34.831em;"><span style="display: inline-block; position: relative; width: 2.271em; height: 0px;"><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -4.635em; left: 50%; margin-left: -0.905em;"><span class="mtd" id="MathJax-Span-263"><span class="mrow" id="MathJax-Span-264"><span class="mn" id="MathJax-Span-265" style="font-family: MathJax_Main;">3.16</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span><span style="position: absolute; clip: rect(3.178em 1000.003em 4.136em -999.997em); top: -3.223em; left: 50%; margin-left: -1.157em;"><span class="mtd" id="MathJax-Span-299"><span class="mrow" id="MathJax-Span-300"><span class="mn" id="MathJax-Span-301" style="font-family: MathJax_Main;">23.57</span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.984em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.371em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 3.128em; vertical-align: -1.247em;"></span></span></nobr></span></div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="chart jqplot-target" id="chart" style="width: 500px; margin: 0 auto; margin-top: 10px;left: -19px;background: white;"></div>
+<div class="result"></div>
+</body>
+</html>

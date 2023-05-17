@@ -1,0 +1,162 @@
+html, body {
+  width: 100%;
+  height:100%;
+}
+
+body {
+    background:#7FFFD4;
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+label {
+	font-size: 0.94vw;
+}
+
+#first
+{
+	visibility: hidden;
+}
+
+#imag1
+{
+	position: absolute;
+	left: 50%;
+	top: 10%;
+}
+
+#imag2
+{
+	position: absolute;
+	left: 50%;
+	top: 10%;
+}
+
+#imag3, #imag4, #imag5, #imag6, #imag7, #imag8
+{
+	position: absolute;
+	left: 50%;
+	top: 10%;
+}
+
+#choosing {
+	position: absolute;
+	top: 10%;
+	left: 25%;
+}
+
+#choosing1 {
+	position: absolute;
+	top: 30%;
+	left: 25%;
+}
+
+#choosing2 {
+	position: absolute;
+	top: 60%;
+	left: 25%;
+}
+
+#first {	
+	position: absolute;
+	left: 11%;
+	top: 9.4%;
+}
+
+sub {
+	color: blue;
+}
+
+h1 {
+	font-size: 1.4vw;
+}
+
+#main {
+	font-weight: bold;
+}
+
+#main1 {
+	font-weight: bold;
+
+}
+
+#answer1 {
+	font-weight: bold;
+
+}
+
+#interval {
+	position: absolute;
+    top: 10%;
+    left: 1%;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#iterac {
+	position: absolute;
+	top: 25%;
+	left: 0.6%;
+}
+
+#combin {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	border: 2px double black;
+}
+
+#others {
+	position: absolute;
+	top: 28%;
+    left: 1%;
+	z-index: -999;
+}
+
+#table {
+	position: absolute;
+	left: 18%;
+	top: 19%;
+	visibility: hidden;
+}
+li{
+	margin-top:42%;
+}
+
+.btn1{
+    position: absolute; 
+    z-index: 9999999999;
+    bottom: 15%;
+    left: 8%;
+}
+
+.st_btn1{
+    font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 3px;
+  background: rgb(64,199,129);
+  box-shadow: 0 -3px rgb(53,167,110) inset;
+  transition: 0.2s;
+}
+
+.st_btn1:hover{
+    background: rgb(53, 167, 110);
+}

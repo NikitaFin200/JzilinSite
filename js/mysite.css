@@ -1,0 +1,110 @@
+
+label {
+	font-size: 0.94vw;
+}
+
+#first
+{
+	visibility: hidden;
+}
+
+#imag1
+{
+	position: absolute;
+	left: 50%;
+	top: 10%;
+}
+
+#imag2
+{
+	position: absolute;
+	left: 50%;
+	top: 10%;
+}
+
+#imag3, #imag4, #imag5, #imag6, #imag7, #imag8
+{
+	position: absolute;
+	left: 50%;
+	top: 10%;
+}
+
+#choosing {
+	position: absolute;
+	top: 5%;
+	left: 25%;
+}
+
+#choosing1 {
+	position: absolute;
+	top: 30%;
+	left: 25%;
+}
+
+#choosing2 {
+	position: absolute;
+	top: 60%;
+	left: 25%;
+}
+
+#first {	
+	position: absolute;
+	left: 11%;
+	top: 9.4%;
+}
+
+sub {
+	color: blue;
+}
+
+h1 {
+	font-size: 1.4vw;
+}
+
+#main {
+	font-weight: bold;
+}
+
+#main1 {
+	font-weight: bold;
+
+}
+
+#answer1 {
+	font-weight: bold;
+
+}
+
+#interval {
+	position: absolute;
+	top: 0%;
+}
+
+#iterac {
+	position: absolute;
+	top: 25%;
+	left: 0.6%;
+}
+
+#combin {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	border: 2px double black;
+}
+
+#others {
+	position: absolute;
+	top: 25%;
+	z-index: -999;
+}
+
+#table {
+	position: absolute;
+	left: 18%;
+	top: 19%;
+	visibility: hidden;
+}
+li{
+	margin-top:42%;
+}

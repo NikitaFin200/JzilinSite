@@ -1,0 +1,101 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, main {
+
+}
+body {
+	line-height: 1;
+    background:#6495ED;
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	/*border-collapse: collapse;*/
+	border-spacing: 0;
+    margin: 0 auto;
+}
+
+.form-title{
+    margin: 0 auto;
+    text-align: center;
+        font-size: 26px;
+}
+
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 14px;
+  background: white;
+  max-width: 70%;
+  width: 70%;
+  border-collapse: collapse;
+  text-align: left;
+}
+th {
+  font-weight: normal;
+  border-bottom: 2px solid #6678b1;
+  border-right: 30px solid white;
+  border-left: 30px solid white;
+  color: #039;
+  padding: 8px 2px;
+}
+td {
+  border-right: 30px solid white;
+  border-left: 30px solid white;
+  color: #669;
+  padding: 12px 2px;
+
+}
+.submit-button{
+    font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: .3em 1em calc(.3em + 1px);
+  border-radius: 3px;
+  background: rgb(64,199,129);
+  box-shadow: 0 -3px rgb(53,167,110) inset;
+  transition: 0.2s;
+
+  position: fixed;
+}
+
+.submit-button:hover{
+    background: rgb(53, 167, 110);
+      position: fixed;
+}
+
+.submit-container{
+    text-align: center;
+      position: fixed;
+}
+.form-title100{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 23px;
+}

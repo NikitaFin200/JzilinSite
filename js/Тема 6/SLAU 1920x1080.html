@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	
+    <link rel="stylesheet" href="../../styles/style.css">
+    <script src="../../js/function.js"></script>
+    <link rel="stylesheet" type="text/css" href="mysite.css">
+
+
+
+	<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+</head>
+<body style="overflow: hidden;">
+    
+    <nav class="top-menu" style="margin-top: 10px; z-index: 10; position: sticky; top: 0;">
+		<ul class="menu-main">
+			<li style="margin-top: 0px;">
+				<a href="../../index.html" onclick="active(3)" class="active3">Тема 1</a>
+			</li>
+			<li style="margin-top: 0px;">
+				<a href="../../index.html" onclick="active(4)" class="active4">Тема 2</a>
+			</li>
+			<li style="margin-top: 0px;">
+				<a href="../../index.html" onclick="active(8)" class="active8">Тема 3</a>
+			</li>
+			<li style="margin-top: 0px;">
+				<a href="../../index.html" onclick="active(5)" class="active5">Тема 4</a>
+			</li>
+			<li style="margin-top: 0px;">
+				<a href="../../index.html" onclick="active(7)" class="active7">Тема 5</a>
+			</li>
+			<li style="margin-top: 0px;">
+				<a href="#">Тема 6</a>
+			</li>
+			
+		</ul>
+		<span class="cd-marker color-1"></span>
+	</nav>
+    
+    
+	
+	<form id="mainForm" method="POST">
+        
+	<div id="choosing">
+		<label id="main">ОДУ первого порядка</label><br><br>
+		<input type="radio" id="task1" checked="" name="check">
+		<label for="firstTask">\(\frac{du}{dt}=-\frac{u}{t}-u^2*lnt\)</label>
+		<br><br>
+		<input type="radio" id="task2" name="check">
+		<label for="secondTask" >\(2[cos^2u*cos(2u)-t]u^{'}=sin(2u)\)</label>
+		<br><br>
+		<input type="radio" id="task3" name="check">
+		<label for="thirdTask">\(\{\frac{x^{'}+\frac{2x}{t}=1}{y^{'}=x+y+\frac{2x}{t}-1}\)</label><br><br>
+	</div>
+	<div id="choosing1">
+		<label id="main">ОДУ второго порядка</label><br><br>
+		<input type="radio" id="task4" name="check">
+		<label for="fourthTask">\(u^{''}=18u^3\)</label>
+		<br><br>
+		<input type="radio" id="task5" name="check">
+		<label for="fifthTask" >\(y^{''}+y=4ctgx\)</label>
+		<br><br>
+		<input type="radio" id="task6" name="check">
+		<label for="sixsTask">\(\{\frac{x^{''}=3+2y}{y^{''}=1+x-t}\)</label><br><br>
+	</div>
+	<div id="choosing2">
+		<label id="main">ОДУ для краевой задачи</label><br><br>
+		<input type="radio" id="task7" name="check">
+		<label for="sevensTask">\(u^{''}=u-e^{\frac{t}{2}}\)</label>
+		<br><br>
+		<input type="radio" id="task8" name="check">
+		<label for="eightsTask" >\(-\left(\frac{2}{2+t}u^{'}\right)^{'}+\frac{1+t}{2}u^{'}+cos(\frac{t}{2})*u=1+\frac{t}{2}\)</label>
+	</div>
+	<div id="first">
+		<input type="text" name="first" id="Ulim" class="limits" value="1">
+		<input type="text" name="first" id="Dlim" class="limits" value="0">
+		<span>(<input type="text" name="first" id="1Input" value="1">x</span><sup><input type="text" name="first" id="2Input" value="2"></sup><span>*<input type="" name="first" id="3Input" value="1">sin</span><sup><input type="text" name="first" id="4Input" value="2"></sup><span>x)dx</span>
+		<br> <br>
+		<input type="text" name="second" id="Ulim2" class="limits" value="0.693">
+		<input type="text" name="second" id="Dlim2" class="limits" value="0">
+        <span><span>√‎(<input type="text" name="second" id="5Input" value="1">e</span><sup><input type="text" name="second" id="6Input" value="1"></sup><span>-1)dx</span></span>
+		<br> <br>
+	</div>
+	
+	<p id="imag1"><img src="1.jpg" width="650px"></p>
+	<p id="imag2"><img src="2.jpg" width="650px"></p>
+	<p id="imag3"><img src="3.jpg" width="650px"></p>
+	<p id="imag4"><img src="4.jpg" width="650px"></p>
+	<p id="imag5"><img src="4.jpg" width="650px"></p>
+	<p id="imag6"><img src="5.jpg" width="650px"></p>
+	<p id="imag7"><img src="6.jpg" width="650px"></p>
+	<p id="imag8"><img src="7.jpg" width="650px"></p>
+	
+	<div id="interval">
+
+		
+	
+		<input type="radio" id="eilerYavn" checked="" name="method">
+		<label>Явный метод Эйлера</label>
+		<br>
+		<input type="radio" id="eilerNeYavn"name="method">
+		<label>Неявный метод Эйлера</label>
+		<br>
+		<input type="radio" id="eilerPeres" name="method">
+		<label>Метод Эйлера с пересчетом</label>
+		<br>
+		<input type="radio" id="kutt2" name="method">
+		<label>Метод Рунге-Кутты второго порядка</label>
+		<br>
+		<input type="radio" id="kutt3" name="method">
+		<label>Метод Рунге-Кутты третьего порядка</label>
+		<br>
+		<input type="radio" id="kutt4" name="method">
+		<label>Метод Рунге-Кутты четвертого порядка</label>
+		<br>
+		<input type="radio" id="preCor" name="method">
+		<label>Метод предиктор-корректор</label>
+		<br>
+		<input type="radio" id="2por" name="method">
+		<label>Неявная формула второго порядка точности</label>
+        <br>
+        <input type="radio" id="konech" name="method">
+		<label>Метод конечных разностей</label>
+	</div>
+        
+
+	<br>
+	<div id="others">
+	<!--<label>Количество делений: </label><input type="text" name="interval" id="del">-->
+	<br> <br>
+	<label id="main"></label>
+	<div  style="border: 1px solid black; padding: 5px;border-radius: 10px; background-color: white;"><br>
+	
+	<label>При количестве делений 5:   x<sub>1</sub> = </label><input type="text" name="answers" disabled="" id="answer1">
+	<br><br>
+	<label>При количестве делений 10:  x<sub>2</sub> = </label><input type="text" name="answers" disabled="" id="answer2">
+	<br><br>
+	<label>При количестве делений 20:  x<sub>3</sub> = </label><input type="text" name="answers" disabled="" id="answer3">
+	<br><br>
+	Невязки:
+	<label>n<sub>1</sub>= </label><input type="text" id="nev1" disabled=""><label> n<sub>2</sub>= </label><input type="text" id="nev2" disabled="">
+	<label>n<sub>3</sub>= </label><input type="text" id="nev3" disabled="">
+	
+	<br> 
+	
+	</div>
+	<br>
+	<div id="temp2" style="border: 1px solid black; padding: 5px; border-radius: 10px; background-color: white;"><br>
+	
+	<label>При количестве делений h:   x<sub>1</sub> = </label><input type="text" name="answers" disabled="" id="del1">
+	<br><br>
+	<label>При количестве делений h/2:  x<sub>2</sub> = </label><input type="text" name="answers" disabled="" id="del2">
+	<br><br>
+	<label>При количестве делений h/4:  x<sub>3</sub> = </label><input type="text" name="answers" disabled="" id="del3">
+	<br><br>
+	<label>При количестве делений 2h:  x<sub>4</sub> = </label><input type="text" name="answers" disabled="" id="del4">
+	<br><br>
+	<label>При количестве делений 4h:  x<sub>5</sub> = </label><input type="text" name="answers" disabled="" id="del5">
+	<br><br>
+	Невязки:
+	<label>n<sub>1</sub>= </label><input type="text" name="NEV" id="n1" disabled=""><label> n<sub>2</sub>= </label><input type="text" name="NEV" disabled="" id="n2">
+	<label>n<sub>3</sub>= </label><input type="text" name="NEV" disabled="" id="n3"><label> n<sub>4</sub>= </label><input type="text" name="NEV" disabled="" id="n4"><label> n<sub>5</sub>= </label><input type="text" name="NEV" disabled="" id="n5">
+	<br>
+	
+	</div>
+	<br><br>
+        
+
+        
+    </div>
+        <div class="btn1" >
+	<button  id="getResult" type="button" class="st_btn1">Найти решение</button>
+        </div>
+
+        <div class="btn1" style="left: 170px; position: absolute; bottom: 5%;">
+				<a href="../../help\help5.html"  style="text-decoration: none; color: white;" class="st_btn1">Помощь</a>
+			</div>
+
+	</form>
+	<script type="text/javascript" src="SLAU.js"></script>
+</body>
+</html>
